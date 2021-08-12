@@ -1,21 +1,47 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-
+import React from "react";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import { NavigationContainer } from "@react-navigation/native";
+import { StyleSheet, View, Text, Button } from "react-native";
+import { createNativeStackNavigator } from "react-native-screens/native-stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import ScreenA from "./screen/screenA";
+import ScreenB from "./screen/screenB";
+import { FontAwesome } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
+const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
+const Drawer = createDrawerNavigator();
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Drawer.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused }) => {
+            if (route.name === "ScreenA") {
+              return (
+                <FontAwesome
+                  name="bars"
+                  size={24}
+                  color={focused ? "green" : "black"}
+                />
+              );
+            } else if (route.name === "ScreenB") {
+              return (
+                <Ionicons
+                  name="person-circle-outline"
+                  size={24}
+                  color={focused ? "green" : "black"}
+                />
+              );
+            }
+          },
+        })}
+      >
+        <Drawer.Screen name="ScreenA" component={ScreenA} />
+        <Drawer.Screen name="ScreenB" component={ScreenB} />
+      </Drawer.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const styles = StyleSheet.create({});
