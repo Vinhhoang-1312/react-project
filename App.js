@@ -13,6 +13,7 @@ const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 export default function App() {
   return (
+    //asd
     <NavigationContainer>
       <Drawer.Navigator
         screenOptions={({ route }) => ({
