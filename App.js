@@ -13,31 +13,8 @@ const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 export default function App() {
   return (
-    //asd
     <NavigationContainer>
-      <Drawer.Navigator
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused }) => {
-            if (route.name === "ScreenA") {
-              return (
-                <FontAwesome
-                  name="bars"
-                  size={24}
-                  color={focused ? "green" : "black"}
-                />
-              );
-            } else if (route.name === "ScreenB") {
-              return (
-                <Ionicons
-                  name="person-circle-outline"
-                  size={24}
-                  color={focused ? "green" : "black"}
-                />
-              );
-            }
-          },
-        })}
-      >
+      <Drawer.Navigator>
         <Drawer.Screen name="ScreenA" component={ScreenA} />
         <Drawer.Screen name="ScreenB" component={ScreenB} />
       </Drawer.Navigator>
