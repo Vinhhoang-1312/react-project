@@ -1,25 +1,34 @@
 import React from "react";
-import { createDrawerNavigator } from "@react-navigation/drawer";
-import { NavigationContainer } from "@react-navigation/native";
-import { StyleSheet, View, Text, Button } from "react-native";
-import { createNativeStackNavigator } from "react-native-screens/native-stack";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import ScreenA from "./screen/screenA";
-import ScreenB from "./screen/screenB";
-import { FontAwesome } from "@expo/vector-icons";
-import { Ionicons } from "@expo/vector-icons";
-const Stack = createNativeStackNavigator();
-const Tab = createBottomTabNavigator();
-const Drawer = createDrawerNavigator();
-export default function App() {
-  return (
-    <NavigationContainer>
-      <Drawer.Navigator>
-        <Drawer.Screen name="ScreenA" component={ScreenA} />
-        <Drawer.Screen name="ScreenB" component={ScreenB} />
-      </Drawer.Navigator>
-    </NavigationContainer>
-  );
-}
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View } from "react-native";
 
-const styles = StyleSheet.create({});
+const App = () => {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.titles}>REACT native</Text>
+      <StatusBar style="auto" />
+    </View>
+  );
+};
+
+export default App;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 24,
+    backgroundColor: "#eaeaea",
+  },
+  titles: {
+    marginTop: 16,
+    paddingVertical: 8,
+    borderWidth: 4,
+    borderColor: "#20232a",
+    borderRadius: 6,
+    backgroundColor: "#61dafb",
+    color: "#20232a",
+    textAlign: "center",
+    fontSize: 30,
+    fontWeight: "bold",
+  },
+});
